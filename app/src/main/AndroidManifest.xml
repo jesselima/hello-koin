@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <!-- TODO 3 - Adicione a sua classe BlaBlaBlaApplication (criada no passo 2) a tag <application> na propriedade "android:name" -->
     <application
         android:name=".core.HelloApplication"
         android:allowBackup="true"
@@ -22,7 +23,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".features.users.presentation.UsersActivity"/>
     </application>
 
 </manifest>

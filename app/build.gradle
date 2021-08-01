@@ -44,6 +44,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$version_core_ktx"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
+    // TODO 1 - adicionar dependencias do koin (linhas 49 a 52)
     /* Koin */
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-android-viewmodel:$koin_version"

@@ -6,6 +6,11 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
+// TODO 2 - Criar uma classe que estende a classe aplication.
+//  No onCreate iimplementar as funções startKoin {}, e dentro dela, o androidLogger() (que vai
+//  disparar logs Level.INFO no LogCat do Android Studio) e androidContext() que vai disponibilizar
+//  o contexto de aplicação do Android através do Koin.
+//  Não necessariamente a inicialização deve estar aqui. Existem outras formas. Aqui é uma delas.
 class HelloApplication : Application() {
     override fun onCreate() {
         super.onCreate()
