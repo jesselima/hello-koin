@@ -1,3 +1,8 @@
 <resources>
+    <string name="message_generic_error">Ooops!! something went wrong!</string>
+    <string name="label_get_message">Get Message</string>
+    <string name="something_went_wrong">Something went wrong</string>
     <string name="app_name">HelloKoin</string>
+    <string name="label_get_users">Get users</string>
+    <string name="label_see_users">See users</string>
 </resources>

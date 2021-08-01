@@ -70,4 +70,7 @@ dependencies {
 
     androidTestImplementation "androidx.test:runner:$version_test_runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version_coroutines"
+
 }
