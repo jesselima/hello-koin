@@ -17,19 +17,39 @@ private val moshi = Moshi.Builder()
 private val retrofit = setupRetrofit()
 
 fun setupRetrofit() : Retrofit {
+    val httpClient = OkHttpClient.Builder()
+
+    httpClient.addInterceptor { chain ->
+        val originalRequest = chain.request()
+
+        val originalHttpUrl = originalRequest.url
+
+        // TODO ==== This block adds query params to - If not in use just remove the block
+        val httpUrlBuilder = originalHttpUrl.newBuilder()
+            .addQueryParameter("api_key", BuildConfig.SOME_API_KEY)
+            .build()
+        val requestBuilder = originalRequest.newBuilder().url(httpUrlBuilder)
+        // End of code add params
+
+        // TODO ==== This lines adds params to header - If nto in use, just remove the lines
+        requestBuilder.addHeader("api_key", BuildConfig.SOME_API_KEY)
+        requestBuilder.addHeader("build_type", BuildConfig.BUILD_TYPE)
+        requestBuilder.addHeader("app_version", BuildConfig.VERSION_NAME)
+
+        val request = requestBuilder.build()
+
+        chain.proceed(request)
+    }
+
     val httpLoggingInterceptor = HttpLoggingInterceptor()
     httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-    val okHttpClient = OkHttpClient()
-        .newBuilder()
-        .addInterceptor(httpLoggingInterceptor)
-        .connectTimeout(30, TimeUnit.SECONDS)
-        .callTimeout(30, TimeUnit.SECONDS)
-        .build()
+    httpClient.callTimeout(timeout = 20L, unit = TimeUnit.SECONDS)
+    httpClient.addInterceptor(httpLoggingInterceptor)
 
     return Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
-        .client(okHttpClient)
+        .client(httpClient.build())
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()

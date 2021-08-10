@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jeziellago.hellokoin">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <!-- TODO 3 - Adicione a sua classe BlaBlaBlaApplication (criada no passo 2) a tag <application> na propriedade "android:name" -->
