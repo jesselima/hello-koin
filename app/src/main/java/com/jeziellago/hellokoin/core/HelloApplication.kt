@@ -1,6 +1,7 @@
 package com.jeziellago.hellokoin.core
 
 import android.app.Application
+import com.jeziellago.hellokoin.core.api.connectionchecker.ConnectionCheckerModule.loadConnectionCheckerModule
 import com.jeziellago.hellokoin.features.hello.di.initHelloDependencies
 import com.squareup.picasso.OkHttp3Downloader
 import com.squareup.picasso.Picasso
@@ -22,6 +23,7 @@ class HelloApplication : Application() {
         }
         initHelloDependencies()
         setupPicassoInstance()
+        loadConnectionCheckerModule()
     }
 
     private fun setupPicassoInstance() {
